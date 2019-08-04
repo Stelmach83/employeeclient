@@ -1,16 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
+import {ListEmployeeComponent} from './employee/list-employee/list-employee.component';
+import {AddEmployeeComponent} from './employee/add-employee/add-employee.component';
+import {EditEmployeeComponent} from './employee/edit-employee/edit-employee.component';
+import {DeleteEmployeeComponent} from './employee/delete-employee/delete-employee.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {routing} from './app.routing';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {TokenInterceptor} from './core/interceptor';
+import {ApiService} from './service/api.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListEmployeeComponent,
+    AddEmployeeComponent,
+    EditEmployeeComponent,
+    DeleteEmployeeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routing,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -1,0 +1,27 @@
+<div class="col-md-12 container">
+  <h2 style="margin: auto"> Employee List</h2><br>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Employee id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+      <td class="hidden"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><button class="btn btn-success" (click)="deleteEmployee(employee)"> Delete</button>
+        <button class="btn btn-success" (click)="editEmployee(employee)" style="margin-left: 20px;"> Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" (click)="addEmployee()"> Add Employee</button>
+</div>
