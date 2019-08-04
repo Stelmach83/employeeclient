@@ -4,7 +4,6 @@ import {AppComponent} from './app.component';
 import {ListEmployeeComponent} from './employee/list-employee/list-employee.component';
 import {AddEmployeeComponent} from './employee/add-employee/add-employee.component';
 import {EditEmployeeComponent} from './employee/edit-employee/edit-employee.component';
-import {DeleteEmployeeComponent} from './employee/delete-employee/delete-employee.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {routing} from './app.routing';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -16,8 +15,7 @@ import {ApiService} from './service/api.service';
     AppComponent,
     ListEmployeeComponent,
     AddEmployeeComponent,
-    EditEmployeeComponent,
-    DeleteEmployeeComponent
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,

@@ -55,4 +55,11 @@ export class EditEmployeeComponent implements OnInit {
         });
   }
 
+  cancel() {
+    this.apiService.getEmployees()
+      .subscribe(data => {
+        this.router.navigate(['list-employee']);
+      });
+  }
+
 }

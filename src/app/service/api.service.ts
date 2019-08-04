@@ -7,7 +7,7 @@ import {Employee} from '../model/employee.model';
 @Injectable()
 export class ApiService {
 
-  private baseUrl = 'http://localhost:8080/api/v2/employees';
+  private baseUrl = 'http://77.55.233.217:8080/homeworkapi/api/v2/employees/';
 
   constructor(private http: HttpClient) { }
 

@@ -3,23 +3,25 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th class="hidden">Employee id</th>
+      <th>id</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
       <th>Phone Number</th>
+      <th>Action</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let employee of employees">
-      <td class="hidden"></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button class="btn btn-success" (click)="deleteEmployee(employee)"> Delete</button>
-        <button class="btn btn-success" (click)="editEmployee(employee)" style="margin-left: 20px;"> Edit</button></td>
+      <td>{{employee.id}}</td>
+      <td>{{employee.firstName}}</td>
+      <td>{{employee.lastName}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.phoneNumber}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm" (click)="editEmployee(employee)" style="width: 60px;"> Edit</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="deleteEmployee(employee)" style="margin-left: 20px; width: 60px;"> Delete</button>
+      </td>
     </tr>
     </tbody>
   </table>

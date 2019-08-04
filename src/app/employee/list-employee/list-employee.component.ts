@@ -26,7 +26,7 @@ export class ListEmployeeComponent implements OnInit {
     this.apiService.deleteEmployee(employee.id)
       .subscribe(data => {
         this.employees = this.employees.filter(e => e !== employee);
-      })
+      });
   }
 
   editEmployee(employee: Employee): void {
