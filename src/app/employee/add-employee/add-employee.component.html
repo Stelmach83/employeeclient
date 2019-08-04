@@ -1,28 +1,36 @@
 <div class="col-md-6 user-container">
   <h2 class="text-center">Add Employee</h2>
-  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
 
+  <form (ngSubmit)="onSubmit()" #addEmployee="ngForm">
     <div class="form-group">
-      <label for="firstName">First Name:</label>
-      <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
+      <label for="firstName"><b>First Name:</b></label>
+      <input name="firstName" class="form-control" id="firstName" type="text" [(ngModel)]="employee.firstName"
+             required #firstName="ngModel">
+      <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">First Name is required.</div>
     </div>
 
     <div class="form-group">
-      <label for="lastName">Last Name:</label>
-      <input formControlName="lastName" placeholder="Last Name" name="lastName" class="form-control" id="lastName">
+      <label for="lastName"><b>Last Name:</b></label>
+      <input name="lastName" class="form-control" id="lastName" type="text" [(ngModel)]="employee.lastName"
+             required #lastName="ngModel">
+      <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">Last Name is required.</div>
     </div>
 
     <div class="form-group">
-      <label for="email">Email:</label>
-      <input formControlName="email" placeholder="Email Address" name="email" class="form-control" id="email">
+      <label for="email"><b>Email:</b></label>
+      <input name="email" class="form-control" id="email" type="text" [(ngModel)]="employee.email"
+             required email #email="ngModel">
+      <div class="alert alert-danger" *ngIf="email.touched && !email.valid">A valid email is required.</div>
     </div>
 
     <div class="form-group">
-      <label for="phoneNumber">Phone Number:</label>
-      <input formControlName="phoneNumber" placeholder="US phone number, eg. +1 (123) 123 1234" name="phoneNumber" class="form-control" id="phoneNumber">
+      <label for="phoneNumber"><b>US Phone Number:</b></label>
+      <input name="phoneNumber" class="form-control" id="phoneNumber" type="text" [(ngModel)]="employee.phoneNumber"
+             required pattern="^([\+]?[1]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$" #phoneNumber="ngModel" placeholder="eg. +1 (123) 123 1234">
+      <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">A valid email US phone number is required.</div>
     </div>
 
-    <button class="btn btn-success">Add</button>
+    <button class="btn btn-success" [disabled]="!addEmployee.form.valid">Add</button>
   </form>
   <br>
   <button class="btn btn-danger" (click)="cancel()">Back to list</button>

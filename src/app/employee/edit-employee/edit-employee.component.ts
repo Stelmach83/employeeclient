@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Employee} from '../../model/employee.model';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {ApiService} from '../../service/api.service';
@@ -12,39 +11,30 @@ import {ApiService} from '../../service/api.service';
 })
 export class EditEmployeeComponent implements OnInit {
 
-  employee: Employee;
-  editForm: FormGroup;
+  employee: Employee = new Employee();
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) {
-  }
-
-  ngOnInit() {
+  constructor(private router: Router, private apiService: ApiService) {
     const employeeId = window.localStorage.getItem("editEmployeeId");
     if (!employeeId) {
       alert("Invalid action.")
       this.router.navigate(['list-employee']);
       return;
     }
-    this.editForm = this.formBuilder.group({
-      id: [],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      phoneNumber: ['', Validators.required]
-    });
     this.apiService.getEmployeeById(+employeeId)
       .subscribe(data => {
-        this.editForm.setValue(data.result);
+        this.employee = data.result;
       });
   }
 
+  ngOnInit() {
+  }
+
   onSubmit() {
-    this.apiService.updateEmployee(this.editForm.value)
+    this.apiService.updateEmployee(this.employee)
       .pipe(first())
       .subscribe(
         data => {
           if (data.status === 200) {
-            alert('Employee updated successfully.');
             this.router.navigate(['list-employee']);
           } else {
             alert(data.message);

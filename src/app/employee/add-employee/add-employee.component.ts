@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ApiService} from '../../service/api.service';
+import {Employee} from '../../model/employee.model';
 
 @Component({
   selector: 'app-add-employee',
@@ -10,23 +10,17 @@ import {ApiService} from '../../service/api.service';
 })
 export class AddEmployeeComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) {
+  employee = new Employee();
+
+  constructor(private router: Router, private apiService: ApiService) {
   }
 
-  addForm: FormGroup;
 
   ngOnInit() {
-    this.addForm = this.formBuilder.group({
-      id: [],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      phoneNumber: ['', Validators.required]
-    });
   }
 
   onSubmit() {
-    this.apiService.createEmployee(this.addForm.value)
+    this.apiService.createEmployee(this.employee)
       .subscribe(data => {
         this.router.navigate(['list-employee']);
       });

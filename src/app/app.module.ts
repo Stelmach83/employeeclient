@@ -4,7 +4,7 @@ import {AppComponent} from './app.component';
 import {ListEmployeeComponent} from './employee/list-employee/list-employee.component';
 import {AddEmployeeComponent} from './employee/add-employee/add-employee.component';
 import {EditEmployeeComponent} from './employee/edit-employee/edit-employee.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {routing} from './app.routing';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './core/interceptor';
@@ -20,8 +20,8 @@ import {ApiService} from './service/api.service';
   imports: [
     BrowserModule,
     routing,
-    ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ApiService, {
     provide: HTTP_INTERCEPTORS,

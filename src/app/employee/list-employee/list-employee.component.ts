@@ -23,10 +23,12 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   deleteEmployee(employee: Employee): void {
-    this.apiService.deleteEmployee(employee.id)
-      .subscribe(data => {
-        this.employees = this.employees.filter(e => e !== employee);
-      });
+    if (confirm(`Are you sure you want to delete ${employee.firstName} ${employee.lastName}?`)) {
+      this.apiService.deleteEmployee(employee.id)
+        .subscribe(data => {
+          this.employees = this.employees.filter(e => e !== employee);
+        });
+    }
   }
 
   editEmployee(employee: Employee): void {

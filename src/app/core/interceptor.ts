@@ -1,3 +1,6 @@
+/**
+ * For future JWT use.
+ */
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
@@ -15,5 +18,4 @@ export class TokenInterceptor implements HttpInterceptor {
     }
     return next.handle(request);
   }
-
 }
