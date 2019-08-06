@@ -32,8 +32,8 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   editEmployee(employee: Employee): void {
-    window.localStorage.removeItem("editEmployeeId");
-    window.localStorage.setItem("editEmployeeId", employee.id.toString());
+    window.localStorage.removeItem('editEmployeeId');
+    window.localStorage.setItem('editEmployeeId', employee.id.toString());
     this.router.navigate(['edit-employee']);
   }
 

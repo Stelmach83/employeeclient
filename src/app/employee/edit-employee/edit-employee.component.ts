@@ -14,9 +14,9 @@ export class EditEmployeeComponent implements OnInit {
   employee: Employee = new Employee();
 
   constructor(private router: Router, private apiService: ApiService) {
-    const employeeId = window.localStorage.getItem("editEmployeeId");
+    const employeeId = localStorage.getItem('editEmployeeId');
     if (!employeeId) {
-      alert("Invalid action.")
+      alert('Invalid action.');
       this.router.navigate(['list-employee']);
       return;
     }
@@ -36,12 +36,14 @@ export class EditEmployeeComponent implements OnInit {
         data => {
           if (data.status === 200) {
             this.router.navigate(['list-employee']);
-          } else {
-            alert(data.message);
           }
         },
         error => {
-          alert(error);
+          if (error.status === 412) {
+            alert(error.error.result);
+          } else {
+            alert('Unknown error.');
+          }
         });
   }
 

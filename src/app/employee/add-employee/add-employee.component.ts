@@ -15,7 +15,6 @@ export class AddEmployeeComponent implements OnInit {
   constructor(private router: Router, private apiService: ApiService) {
   }
 
-
   ngOnInit() {
   }
 

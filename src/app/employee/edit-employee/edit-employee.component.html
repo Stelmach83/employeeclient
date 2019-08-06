@@ -27,7 +27,7 @@
       <label for="phoneNumber"><b>US Phone Number:</b></label>
       <input name="phoneNumber" class="form-control" id="phoneNumber" type="text" [(ngModel)]="employee.phoneNumber"
              required pattern="^([\+]?[1]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$" #phoneNumber="ngModel" placeholder="eg. +1 (123) 123 1234">
-      <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">A valid email US phone number is required.</div>
+      <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">A valid US phone number is required.</div>
     </div>
 
     <button class="btn btn-success" [disabled]="!editEmployee.form.valid">Edit</button>
